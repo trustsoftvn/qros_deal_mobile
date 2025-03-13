@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "qrosdeal staging",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "staging",
+        "--dart-define",
+        "env=staging"
+      ]
+    },
+    {
+      "name": "qrosdeal production",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "production",
+        "--dart-define",
+        "env=production"
+      ]
+    }
+  ]
+}
