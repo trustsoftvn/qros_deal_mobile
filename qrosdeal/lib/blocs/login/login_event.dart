@@ -14,6 +14,16 @@ class PasswordInputChanged extends LoginEvent {
   PasswordInputChanged(this.password);
 }
 
+class PinCodeInputChange extends LoginEvent {
+  final String pinCode;
+
+  PinCodeInputChange(this.pinCode);
+}
+
 class LoginButtonPressed extends LoginEvent {
   LoginButtonPressed();
+}
+
+class PinLoginButtonPressed extends LoginEvent {
+  PinLoginButtonPressed();
 }

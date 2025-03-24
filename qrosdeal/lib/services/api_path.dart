@@ -5,6 +5,10 @@ class ApiPath {
   static const verifyPassword = '/api/v1/signup/setup-password';
   static const verifyPinCode = '/api/v1/signup/setup-pincode';
   static const updateInformation = '/api/v1/signup/update-information';
+  static const user = '/api/v1/user';
+
+  static const exchangeConfirmationToken =
+      '/api/v1/exchange-confirmation-token';
 
   static const uploadStoreImage = '/api/v1/dms/file/store';
   static const store = '/api/v1/store';

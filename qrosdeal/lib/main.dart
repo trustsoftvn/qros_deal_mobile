@@ -6,6 +6,7 @@ import 'package:qrosdeal/blocs/common/common_bloc.dart';
 import 'package:qrosdeal/common/style/app_color.dart';
 import 'package:qrosdeal/repositories/app_data_repository.dart';
 import 'package:qrosdeal/screens/login/login_screen.dart';
+import 'package:qrosdeal/screens/splash/splash_screen.dart';
 
 Future<void> main() async {
   await loadEnv();
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Lato',
         ),
-        home: const LoginScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

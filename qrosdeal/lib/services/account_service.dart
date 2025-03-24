@@ -3,7 +3,8 @@ import 'package:qrosdeal/services/api_path.dart';
 import 'package:qrosdeal/services/rest_api_service.dart';
 
 class AccountService extends RestApiService {
-  Future<Response> login(String email, String password, bool? isRegister) async {
+  Future<Response> login(
+      String email, String password, bool? isRegister) async {
     Map<String, dynamic> data = {
       'email': email,
       'password': password,
@@ -56,6 +57,18 @@ class AccountService extends RestApiService {
         "reference": reference,
       },
     );
+
+    return response;
+  }
+
+  Future<Response> getUserInfo() async {
+    final response = await get(ApiPath.user);
+    return response;
+  }
+
+  Future<Response> getConfirmationToken(String action, String jwtToken) async {
+    final response = await post(ApiPath.exchangeConfirmationToken,
+        data: {"action": action, "jwt_token": jwtToken});
 
     return response;
   }
