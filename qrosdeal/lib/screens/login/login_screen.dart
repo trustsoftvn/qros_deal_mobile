@@ -51,7 +51,7 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Login $hasAccessToken',
+                          'Login',
                           style: AppTextStyle.bold32.copyWith(
                             color: AppColor.textPrimary,
                           ),
