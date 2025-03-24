@@ -47,6 +47,8 @@ dependencies:
   mime: ^2.0.0
   freezed_annotation: ^2.4.4
   dropdown_button2: ^2.3.9
+  dart_jsonwebtoken: ^3.2.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:

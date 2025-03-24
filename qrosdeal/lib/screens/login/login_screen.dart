@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:qrosdeal/blocs/login/login_bloc.dart';
 import 'package:qrosdeal/blocs/login/login_event.dart';
 import 'package:qrosdeal/blocs/login/login_state.dart';
@@ -9,14 +10,20 @@ import 'package:qrosdeal/common/components/text_field.dart';
 import 'package:qrosdeal/common/style/app_color.dart';
 import 'package:qrosdeal/common/style/app_text_style.dart';
 import 'package:qrosdeal/core/base_stateless_widget.dart';
+import 'package:qrosdeal/repositories/app_data_repository.dart';
 import 'package:qrosdeal/screens/main/main_screen.dart';
 import 'package:qrosdeal/screens/register/register_user_type/register_user_type.dart';
+import 'package:qrosdeal/screens/splash/splash_screen.dart';
 
 class LoginScreen extends BaseStatelessWidget<LoginBloc> {
-  const LoginScreen({super.key});
+  final bool hasAccessToken;
+
+  const LoginScreen({super.key, this.hasAccessToken = false});
 
   @override
   Widget buildWidget(BuildContext context) {
+    var appDataRepository = GetIt.instance.get<AppDataRepository>();
+
     return BlocProvider(
       create: (context) => LoginBloc(),
       child: Scaffold(
@@ -24,7 +31,8 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.all(16),
-            child: BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
+            child:
+                BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
               if (state.isSuccess) {
                 Navigator.pushReplacement(
                   context,
@@ -43,7 +51,7 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Login',
+                          'Login $hasAccessToken',
                           style: AppTextStyle.bold32.copyWith(
                             color: AppColor.textPrimary,
                           ),
@@ -57,56 +65,46 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
                             color: AppColor.textSecondary,
                           ),
                         ),
-                        const SizedBox(
-                          height: 32,
+                        SizedBox(
+                          height: hasAccessToken ? 10 : 32,
                         ),
-                        CustomTextField(
-                          label: 'Email',
-                          inputType: TextInputType.emailAddress,
-                          onChanged: (value) {
-                            bloc.add(EmailInputChanged(value));
-                          },
-                        ),
+                        hasAccessToken
+                            ? Text(appDataRepository.user?.email ?? "",
+                                style: AppTextStyle.normal14)
+                            : CustomTextField(
+                                label: 'Email',
+                                inputType: TextInputType.emailAddress,
+                                onChanged: (value) {
+                                  bloc.add(EmailInputChanged(value));
+                                },
+                              ),
                         const SizedBox(
                           height: 8,
                         ),
-                        CustomTextField(
-                          label: 'Password',
-                          obscureText: true,
-                          onChanged: (value) {
-                            bloc.add(PasswordInputChanged(value));
-                          },
-                        ),
+                        hasAccessToken
+                            ? CustomTextField(
+                                label: 'PIN code',
+                                obscureText: true,
+                                inputType: TextInputType.number,
+                                maxLength: 6,
+                                onChanged: (value) {
+                                  bloc.add(PinCodeInputChange(value));
+                                })
+                            : CustomTextField(
+                                label: 'Password',
+                                obscureText: true,
+                                onChanged: (value) {
+                                  bloc.add(PasswordInputChanged(value));
+                                },
+                              ),
                         const SizedBox(
                           height: 32,
                         ),
-                        CustomButton(
-                          text: 'Log in',
-                          onPressed: () {
-                            bloc.add(LoginButtonPressed());
-                          },
-                        ),
+                        _getLoginButton(bloc, state)
                       ],
                     ),
                   ),
-                  RichText(
-                    text: TextSpan(
-                        text: "Don't have an account? ",
-                        style: AppTextStyle.normal14.copyWith(color: AppColor.textSecondary),
-                        children: [
-                          TextSpan(
-                              text: "Sign up",
-                              style: AppTextStyle.bold14.copyWith(color: AppColor.primary),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const RegisterUserType()),
-                                  );
-                                })
-                        ]),
-                  ),
+                  _getBottomTextView(context),
                 ],
               );
             }),
@@ -114,5 +112,76 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
         ),
       ),
     );
+  }
+
+  Widget _getLoginButton(LoginBloc bloc, LoginState state) {
+    if (state.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+
+    return hasAccessToken
+        ? CustomButton(
+            text: 'Log in',
+            onPressed: () {
+              bloc.add(PinLoginButtonPressed());
+            },
+            isDisabled: state.isLoginButtonDisabled,
+          )
+        : CustomButton(
+            text: 'Log in',
+            onPressed: () {
+              bloc.add(LoginButtonPressed());
+            },
+            isDisabled: state.isLoginButtonDisabled,
+          );
+  }
+
+  Widget _getBottomTextView(BuildContext context) {
+    return RichText(
+        text: !hasAccessToken
+            ? TextSpan(
+                text: "Don't have an account? ",
+                style: AppTextStyle.normal14
+                    .copyWith(color: AppColor.textSecondary),
+                children: [
+                    TextSpan(
+                        text: "Sign up",
+                        style: AppTextStyle.bold14
+                            .copyWith(color: AppColor.primary),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterUserType()),
+                            );
+                          })
+                  ])
+            : TextSpan(
+                text: "Not your account? ",
+                style: AppTextStyle.normal14
+                    .copyWith(color: AppColor.textSecondary),
+                children: [
+                    TextSpan(
+                        text: "Sign out",
+                        style: AppTextStyle.bold14
+                            .copyWith(color: AppColor.primary),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            final appDataRepository =
+                                GetIt.instance.get<AppDataRepository>();
+
+                            await appDataRepository.clearData();
+
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const SplashScreen()),
+                            );
+                          })
+                  ]));
   }
 }

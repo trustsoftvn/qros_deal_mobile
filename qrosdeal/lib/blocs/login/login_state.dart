@@ -8,6 +8,9 @@ class LoginState extends BaseBlocState with _$LoginState {
   const factory LoginState({
     @Default("") String email,
     @Default("") String password,
+    @Default("") String pinCode,
+    @Default(true) bool isLoginButtonDisabled,
+    @Default(false) bool isLoading,
     @Default(false) bool isSuccess,
   }) = _LoginState;
 }

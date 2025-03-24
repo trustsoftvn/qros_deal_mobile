@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginState {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get pinCode => throw _privateConstructorUsedError;
+  bool get isLoginButtonDisabled => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isSuccess => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
@@ -33,7 +36,13 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({String email, String password, bool isSuccess});
+  $Res call(
+      {String email,
+      String password,
+      String pinCode,
+      bool isLoginButtonDisabled,
+      bool isLoading,
+      bool isSuccess});
 }
 
 /// @nodoc
@@ -53,6 +62,9 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? pinCode = null,
+    Object? isLoginButtonDisabled = null,
+    Object? isLoading = null,
     Object? isSuccess = null,
   }) {
     return _then(_value.copyWith(
@@ -64,6 +76,18 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      pinCode: null == pinCode
+          ? _value.pinCode
+          : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoginButtonDisabled: null == isLoginButtonDisabled
+          ? _value.isLoginButtonDisabled
+          : isLoginButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSuccess: null == isSuccess
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
@@ -80,7 +104,13 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password, bool isSuccess});
+  $Res call(
+      {String email,
+      String password,
+      String pinCode,
+      bool isLoginButtonDisabled,
+      bool isLoading,
+      bool isSuccess});
 }
 
 /// @nodoc
@@ -98,6 +128,9 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? pinCode = null,
+    Object? isLoginButtonDisabled = null,
+    Object? isLoading = null,
     Object? isSuccess = null,
   }) {
     return _then(_$LoginStateImpl(
@@ -109,6 +142,18 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      pinCode: null == pinCode
+          ? _value.pinCode
+          : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoginButtonDisabled: null == isLoginButtonDisabled
+          ? _value.isLoginButtonDisabled
+          : isLoginButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSuccess: null == isSuccess
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
@@ -121,7 +166,12 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 
 class _$LoginStateImpl implements _LoginState {
   const _$LoginStateImpl(
-      {this.email = "", this.password = "", this.isSuccess = false});
+      {this.email = "",
+      this.password = "",
+      this.pinCode = "",
+      this.isLoginButtonDisabled = true,
+      this.isLoading = false,
+      this.isSuccess = false});
 
   @override
   @JsonKey()
@@ -131,11 +181,20 @@ class _$LoginStateImpl implements _LoginState {
   final String password;
   @override
   @JsonKey()
+  final String pinCode;
+  @override
+  @JsonKey()
+  final bool isLoginButtonDisabled;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
   final bool isSuccess;
 
   @override
   String toString() {
-    return 'LoginState(email: $email, password: $password, isSuccess: $isSuccess)';
+    return 'LoginState(email: $email, password: $password, pinCode: $pinCode, isLoginButtonDisabled: $isLoginButtonDisabled, isLoading: $isLoading, isSuccess: $isSuccess)';
   }
 
   @override
@@ -146,12 +205,18 @@ class _$LoginStateImpl implements _LoginState {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode) &&
+            (identical(other.isLoginButtonDisabled, isLoginButtonDisabled) ||
+                other.isLoginButtonDisabled == isLoginButtonDisabled) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, isSuccess);
+  int get hashCode => Object.hash(runtimeType, email, password, pinCode,
+      isLoginButtonDisabled, isLoading, isSuccess);
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -166,12 +231,21 @@ abstract class _LoginState implements LoginState {
   const factory _LoginState(
       {final String email,
       final String password,
+      final String pinCode,
+      final bool isLoginButtonDisabled,
+      final bool isLoading,
       final bool isSuccess}) = _$LoginStateImpl;
 
   @override
   String get email;
   @override
   String get password;
+  @override
+  String get pinCode;
+  @override
+  bool get isLoginButtonDisabled;
+  @override
+  bool get isLoading;
   @override
   bool get isSuccess;
 

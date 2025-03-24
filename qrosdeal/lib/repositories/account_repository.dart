@@ -13,19 +13,34 @@ class AccountRepository {
     return res.data['data']['reference'];
   }
 
-  Future<bool> signUpVerifyOtp(String email, String otp, String reference) async {
+  Future<bool> signUpVerifyOtp(
+      String email, String otp, String reference) async {
     await _accountService.signUpVerifyOtp(email, otp, reference);
     return true;
   }
 
-  Future<bool> signUpCreatePassword(String email, String password, String reference) async {
+  Future<bool> signUpCreatePassword(
+      String email, String password, String reference) async {
     await _accountService.signUpCreatePassword(email, password, reference);
     return true;
   }
 
-  Future<bool> signUpCreatePinCode(String email, String pincode, String reference) async {
+  Future<bool> signUpCreatePinCode(
+      String email, String pincode, String reference) async {
     await _accountService.signUpCreatePinCode(email, pincode, reference);
     return true;
+  }
+
+  Future<Map<String, dynamic>> getUserInfo() async {
+    final response = await _accountService.getUserInfo();
+    return response.data;
+  }
+
+  Future<String> getConfirmationToken(String action, String jwtToken) async {
+    final response =
+        await _accountService.getConfirmationToken(action, jwtToken);
+
+    return response.data['data']['confirmation_token'];
   }
 
   Future<bool> updateUserInformation({
