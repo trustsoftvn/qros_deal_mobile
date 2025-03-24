@@ -17,13 +17,12 @@ import 'package:qrosdeal/screens/splash/splash_screen.dart';
 
 class LoginScreen extends BaseStatelessWidget<LoginBloc> {
   final bool hasAccessToken;
+  final appDataRepository = GetIt.instance.get<AppDataRepository>();
 
-  const LoginScreen({super.key, this.hasAccessToken = false});
+  LoginScreen({super.key, this.hasAccessToken = false});
 
   @override
   Widget buildWidget(BuildContext context) {
-    var appDataRepository = GetIt.instance.get<AppDataRepository>();
-
     return BlocProvider(
       create: (context) => LoginBloc(),
       child: Scaffold(
@@ -171,9 +170,6 @@ class LoginScreen extends BaseStatelessWidget<LoginBloc> {
                             .copyWith(color: AppColor.primary),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
-                            final appDataRepository =
-                                GetIt.instance.get<AppDataRepository>();
-
                             await appDataRepository.clearData();
 
                             Navigator.pushReplacement(

@@ -12,6 +12,7 @@ import 'package:qrosdeal/utils/auth_utils.dart';
 
 class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
   final AccountRepository _accountRepository = AccountRepository();
+  final AppDataRepository _appDataRepository = GetIt.instance.get();
 
   LoginBloc() : super(const LoginState()) {
     on<EmailInputChanged>(_onEmailInputChanged);
@@ -47,9 +48,8 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
       // Get access token
       final accessToken =
           await _accountRepository.login(state.email, state.password, false);
-      final appDataRepository = GetIt.instance.get<AppDataRepository>();
-      await appDataRepository.saveAccessToken(accessToken);
-      await appDataRepository.loadData();
+      await _appDataRepository.saveAccessToken(accessToken);
+      await _appDataRepository.loadData();
 
       // Get user info
       final userResponse = await _accountRepository.getUserInfo();
@@ -59,8 +59,8 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
           fullName: data['full_name'],
           userRef: data['reference'],
           lastLogin: data['last_login']);
-      await appDataRepository.saveUser(user);
-      await appDataRepository.loadData();
+      await _appDataRepository.saveUser(user);
+      await _appDataRepository.loadData();
 
       emit(state.copyWith(isSuccess: true, isLoading: false));
     } catch (error) {
@@ -72,8 +72,7 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
   void _onPinLoginButtonPressed(PinLoginButtonPressed event, emit) async {
     try {
       emit(state.copyWith(isLoading: true));
-      final appDataRepository = GetIt.instance.get<AppDataRepository>();
-      final user = appDataRepository.user;
+      final user = _appDataRepository.user;
 
       final jwtToken = AuthUtils.generateJWTToken(
           user!.userRef, ClientAuthenticationType.pinCode, state.pinCode);

@@ -23,8 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
     var accessToken = appDataRepository.accessToken;
     if (accessToken == null || accessToken.isEmpty) {
       Future(() {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
       });
     } else {
       Future(() {
@@ -32,8 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      const LoginScreen(hasAccessToken: true)));
+                  builder: (context) => LoginScreen(hasAccessToken: true)));
         }
       });
     }
