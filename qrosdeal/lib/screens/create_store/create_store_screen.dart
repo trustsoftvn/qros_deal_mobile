@@ -85,13 +85,19 @@ class _CreateStoreScreenState extends State<CreateStoreScreen> {
                           ),
                           TextButton(
                               onPressed: () async {
-                                final image = await picker.pickImage(source: ImageSource.gallery);
+                                final image = await picker.pickImage(
+                                    source: ImageSource.gallery);
                                 if (image != null) {
                                   bloc.add(ChooseStoreImage(image.path));
                                 }
                               },
                               child: const Text('Choose image')),
-                          if (state.imageURL.isNotEmpty) Image.network(state.imageURL),
+                          if (state.imageURL.isNotEmpty)
+                            Image.network(
+                              state.imageURL,
+                              errorBuilder: (_, _2, _3) =>
+                                  const Text("Image not found"),
+                            ),
                         ],
                       ),
                     ),
