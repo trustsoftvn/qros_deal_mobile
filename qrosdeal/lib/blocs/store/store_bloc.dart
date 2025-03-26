@@ -8,12 +8,16 @@ class StoreBloc extends BaseBloc<StoreEvent, StoreState> {
 
   StoreBloc() : super(const StoreState()) {
     fetchStoreList();
+    on<RefetchStores>(_refetchStores);
+  }
+
+  Future<void> _refetchStores(event, emit) async {
+    await fetchStoreList();
   }
 
   Future<void> fetchStoreList() async {
     try {
       final stores = await _storeRepository.fetchStoreList();
-
       emit(state.copyWith(stores: stores));
     } catch (error) {
       handleExeption(error);

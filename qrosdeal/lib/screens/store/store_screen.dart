@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrosdeal/blocs/store/store_bloc.dart';
+import 'package:qrosdeal/blocs/store/store_event.dart';
 import 'package:qrosdeal/blocs/store/store_state.dart';
 import 'package:qrosdeal/common/style/app_color.dart';
 import 'package:qrosdeal/common/style/app_text_style.dart';
@@ -18,6 +19,7 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
         backgroundColor: AppColor.bgPrimary,
         body: BlocBuilder<StoreBloc, StoreState>(
           builder: (context, state) {
+            final bloc = context.read<StoreBloc>();
             return SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -35,13 +37,15 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
                           ),
                           IconButton(
                             iconSize: 36,
-                            onPressed: () {
-                              Navigator.push(
+                            onPressed: () async {
+                              await Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const CreateStoreScreen(),
+                                  builder: (context) =>
+                                      const CreateStoreScreen(),
                                 ),
                               );
+                              bloc.add(RefetchStores());
                             },
                             icon: const Icon(Icons.add),
                             color: AppColor.primary,
@@ -55,15 +59,19 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
                             style: AppTextStyle.normal14,
                             textAlign: TextAlign.left,
                           )
-                        : ListView.builder(
+                        : ListView.separated(
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                              height: 10,
+                            ),
                             shrinkWrap: true,
                             itemCount: state.stores.length,
                             itemBuilder: (context, index) {
                               final store = state.stores[index];
                               return GestureDetector(
                                 behavior: HitTestBehavior.opaque,
-                                onTap: () {
-                                  Navigator.push(
+                                onTap: () async {
+                                  await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => CreateStoreScreen(
@@ -71,6 +79,7 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
                                       ),
                                     ),
                                   );
+                                  bloc.add(RefetchStores());
                                 },
                                 child: Row(
                                   children: [
@@ -79,8 +88,9 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
                                       height: 52,
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(16),
-                                        child: Image.network(store.logo, fit: BoxFit.cover,
-                                            errorBuilder: (context, error, stackTrace) {
+                                        child: Image.network(store.logo,
+                                            fit: BoxFit.cover, errorBuilder:
+                                                (context, error, stackTrace) {
                                           return Container(
                                             color: AppColor.bgSecondary,
                                             child: const Icon(Icons.store),
@@ -92,7 +102,8 @@ class StoreScreen extends BaseStatelessWidget<StoreBloc> {
                                       width: 8,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           store.name,

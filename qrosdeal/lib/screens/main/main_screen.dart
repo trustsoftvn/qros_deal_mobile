@@ -14,7 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
 
-  List<Widget> _widgetOptions = [
+  final List<Widget> _widgetOptions = [
     StoreScreen(),
     DealDetailsScreen(),
     StoreScreen(),
