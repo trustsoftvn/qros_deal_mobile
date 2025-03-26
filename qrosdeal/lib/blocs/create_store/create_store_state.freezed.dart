@@ -24,6 +24,8 @@ mixin _$CreateStoreState {
   String get phoneNumber => throw _privateConstructorUsedError;
   String get imageURL => throw _privateConstructorUsedError;
   bool get isSuccess => throw _privateConstructorUsedError;
+  bool get isButtonDisabled => throw _privateConstructorUsedError;
+  StoreDto? get originalStore => throw _privateConstructorUsedError;
 
   /// Create a copy of CreateStoreState
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +48,11 @@ abstract class $CreateStoreStateCopyWith<$Res> {
       double longitude,
       String phoneNumber,
       String imageURL,
-      bool isSuccess});
+      bool isSuccess,
+      bool isButtonDisabled,
+      StoreDto? originalStore});
+
+  $StoreDtoCopyWith<$Res>? get originalStore;
 }
 
 /// @nodoc
@@ -72,6 +78,8 @@ class _$CreateStoreStateCopyWithImpl<$Res, $Val extends CreateStoreState>
     Object? phoneNumber = null,
     Object? imageURL = null,
     Object? isSuccess = null,
+    Object? isButtonDisabled = null,
+    Object? originalStore = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -106,7 +114,29 @@ class _$CreateStoreStateCopyWithImpl<$Res, $Val extends CreateStoreState>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      isButtonDisabled: null == isButtonDisabled
+          ? _value.isButtonDisabled
+          : isButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      originalStore: freezed == originalStore
+          ? _value.originalStore
+          : originalStore // ignore: cast_nullable_to_non_nullable
+              as StoreDto?,
     ) as $Val);
+  }
+
+  /// Create a copy of CreateStoreState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StoreDtoCopyWith<$Res>? get originalStore {
+    if (_value.originalStore == null) {
+      return null;
+    }
+
+    return $StoreDtoCopyWith<$Res>(_value.originalStore!, (value) {
+      return _then(_value.copyWith(originalStore: value) as $Val);
+    });
   }
 }
 
@@ -126,7 +156,12 @@ abstract class _$$CreateStoreStateImplCopyWith<$Res>
       double longitude,
       String phoneNumber,
       String imageURL,
-      bool isSuccess});
+      bool isSuccess,
+      bool isButtonDisabled,
+      StoreDto? originalStore});
+
+  @override
+  $StoreDtoCopyWith<$Res>? get originalStore;
 }
 
 /// @nodoc
@@ -150,6 +185,8 @@ class __$$CreateStoreStateImplCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? imageURL = null,
     Object? isSuccess = null,
+    Object? isButtonDisabled = null,
+    Object? originalStore = freezed,
   }) {
     return _then(_$CreateStoreStateImpl(
       id: freezed == id
@@ -184,6 +221,14 @@ class __$$CreateStoreStateImplCopyWithImpl<$Res>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      isButtonDisabled: null == isButtonDisabled
+          ? _value.isButtonDisabled
+          : isButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      originalStore: freezed == originalStore
+          ? _value.originalStore
+          : originalStore // ignore: cast_nullable_to_non_nullable
+              as StoreDto?,
     ));
   }
 }
@@ -199,7 +244,9 @@ class _$CreateStoreStateImpl implements _CreateStoreState {
       this.longitude = 0,
       this.phoneNumber = "",
       this.imageURL = "",
-      this.isSuccess = false});
+      this.isSuccess = false,
+      this.isButtonDisabled = true,
+      this.originalStore = null});
 
   @override
   @JsonKey()
@@ -225,10 +272,16 @@ class _$CreateStoreStateImpl implements _CreateStoreState {
   @override
   @JsonKey()
   final bool isSuccess;
+  @override
+  @JsonKey()
+  final bool isButtonDisabled;
+  @override
+  @JsonKey()
+  final StoreDto? originalStore;
 
   @override
   String toString() {
-    return 'CreateStoreState(id: $id, name: $name, address: $address, latitude: $latitude, longitude: $longitude, phoneNumber: $phoneNumber, imageURL: $imageURL, isSuccess: $isSuccess)';
+    return 'CreateStoreState(id: $id, name: $name, address: $address, latitude: $latitude, longitude: $longitude, phoneNumber: $phoneNumber, imageURL: $imageURL, isSuccess: $isSuccess, isButtonDisabled: $isButtonDisabled, originalStore: $originalStore)';
   }
 
   @override
@@ -248,12 +301,26 @@ class _$CreateStoreStateImpl implements _CreateStoreState {
             (identical(other.imageURL, imageURL) ||
                 other.imageURL == imageURL) &&
             (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess));
+                other.isSuccess == isSuccess) &&
+            (identical(other.isButtonDisabled, isButtonDisabled) ||
+                other.isButtonDisabled == isButtonDisabled) &&
+            (identical(other.originalStore, originalStore) ||
+                other.originalStore == originalStore));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, address, latitude,
-      longitude, phoneNumber, imageURL, isSuccess);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      address,
+      latitude,
+      longitude,
+      phoneNumber,
+      imageURL,
+      isSuccess,
+      isButtonDisabled,
+      originalStore);
 
   /// Create a copy of CreateStoreState
   /// with the given fields replaced by the non-null parameter values.
@@ -274,7 +341,9 @@ abstract class _CreateStoreState implements CreateStoreState {
       final double longitude,
       final String phoneNumber,
       final String imageURL,
-      final bool isSuccess}) = _$CreateStoreStateImpl;
+      final bool isSuccess,
+      final bool isButtonDisabled,
+      final StoreDto? originalStore}) = _$CreateStoreStateImpl;
 
   @override
   int? get id;
@@ -292,6 +361,10 @@ abstract class _CreateStoreState implements CreateStoreState {
   String get imageURL;
   @override
   bool get isSuccess;
+  @override
+  bool get isButtonDisabled;
+  @override
+  StoreDto? get originalStore;
 
   /// Create a copy of CreateStoreState
   /// with the given fields replaced by the non-null parameter values.

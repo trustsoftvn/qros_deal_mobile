@@ -103,8 +103,10 @@ class _CreateStoreScreenState extends State<CreateStoreScreen> {
                     ),
                     CustomButton(
                       text: state.id != null ? 'Update' : 'Create',
+                      isDisabled: state.isButtonDisabled,
                       onPressed: () {
                         bloc.add(CreateButtonPressed());
+                        Navigator.pop(context);
                       },
                     ),
                   ],
