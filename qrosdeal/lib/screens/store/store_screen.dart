@@ -8,18 +8,18 @@ import 'package:qrosdeal/common/style/app_text_style.dart';
 import 'package:qrosdeal/core/base_stateless_widget.dart';
 import 'package:qrosdeal/screens/create_store/create_store_screen.dart';
 
-class StoreScreen extends BaseStatelessWidget<StoreBloc> {
+class StoreScreen extends BaseStatelessWidget<DealBloc> {
   const StoreScreen({super.key});
 
   @override
   Widget buildWidget(BuildContext context) {
     return BlocProvider(
-      create: (context) => StoreBloc(),
+      create: (context) => DealBloc(),
       child: Scaffold(
         backgroundColor: AppColor.bgPrimary,
-        body: BlocBuilder<StoreBloc, StoreState>(
+        body: BlocBuilder<DealBloc, StoreState>(
           builder: (context, state) {
-            final bloc = context.read<StoreBloc>();
+            final bloc = context.read<DealBloc>();
             return SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(16),

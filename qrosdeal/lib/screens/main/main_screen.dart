@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qrosdeal/screens/deal_details/deal_details_screen.dart';
+import 'package:qrosdeal/screens/deals/deals_screen.dart';
 import 'package:qrosdeal/screens/main/components/bottom_navigation_bar.dart';
 import 'package:qrosdeal/screens/store/store_screen.dart';
 
@@ -15,9 +16,9 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _widgetOptions = [
-    StoreScreen(),
-    DealDetailsScreen(),
-    StoreScreen(),
+    const StoreScreen(),
+    const DealsScreen(),
+    const StoreScreen(),
   ];
 
   @override

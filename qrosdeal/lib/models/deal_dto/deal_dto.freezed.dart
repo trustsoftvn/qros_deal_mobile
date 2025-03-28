@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'deal_details_state.dart';
+part of 'deal_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,85 +14,90 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+DealDto _$DealDtoFromJson(Map<String, dynamic> json) {
+  return _DealDto.fromJson(json);
+}
+
 /// @nodoc
-mixin _$DealDetailsState {
-  int? get id => throw _privateConstructorUsedError;
+mixin _$DealDto {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get type => throw _privateConstructorUsedError;
+  int get quanitity => throw _privateConstructorUsedError;
+  int get quantityStatus => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get condition => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   double get discountPercent => throw _privateConstructorUsedError;
   double get maxDiscount => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
   DateTime? get startDate => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
-  List<int> get storeIds => throw _privateConstructorUsedError;
 
-  /// Create a copy of DealDetailsState
+  /// Serializes this DealDto to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DealDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DealDetailsStateCopyWith<DealDetailsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DealDtoCopyWith<DealDto> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DealDetailsStateCopyWith<$Res> {
-  factory $DealDetailsStateCopyWith(
-          DealDetailsState value, $Res Function(DealDetailsState) then) =
-      _$DealDetailsStateCopyWithImpl<$Res, DealDetailsState>;
+abstract class $DealDtoCopyWith<$Res> {
+  factory $DealDtoCopyWith(DealDto value, $Res Function(DealDto) then) =
+      _$DealDtoCopyWithImpl<$Res, DealDto>;
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String name,
       String description,
       int type,
+      int quanitity,
+      int quantityStatus,
       String currency,
       String condition,
       String image,
       double discountPercent,
       double maxDiscount,
-      int quantity,
       DateTime? startDate,
-      DateTime? endDate,
-      List<int> storeIds});
+      DateTime? endDate});
 }
 
 /// @nodoc
-class _$DealDetailsStateCopyWithImpl<$Res, $Val extends DealDetailsState>
-    implements $DealDetailsStateCopyWith<$Res> {
-  _$DealDetailsStateCopyWithImpl(this._value, this._then);
+class _$DealDtoCopyWithImpl<$Res, $Val extends DealDto>
+    implements $DealDtoCopyWith<$Res> {
+  _$DealDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of DealDetailsState
+  /// Create a copy of DealDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = null,
     Object? type = null,
+    Object? quanitity = null,
+    Object? quantityStatus = null,
     Object? currency = null,
     Object? condition = null,
     Object? image = null,
     Object? discountPercent = null,
     Object? maxDiscount = null,
-    Object? quantity = null,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? storeIds = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -104,6 +109,14 @@ class _$DealDetailsStateCopyWithImpl<$Res, $Val extends DealDetailsState>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as int,
+      quanitity: null == quanitity
+          ? _value.quanitity
+          : quanitity // ignore: cast_nullable_to_non_nullable
+              as int,
+      quantityStatus: null == quantityStatus
+          ? _value.quantityStatus
+          : quantityStatus // ignore: cast_nullable_to_non_nullable
               as int,
       currency: null == currency
           ? _value.currency
@@ -125,10 +138,6 @@ class _$DealDetailsStateCopyWithImpl<$Res, $Val extends DealDetailsState>
           ? _value.maxDiscount
           : maxDiscount // ignore: cast_nullable_to_non_nullable
               as double,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -137,70 +146,65 @@ class _$DealDetailsStateCopyWithImpl<$Res, $Val extends DealDetailsState>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      storeIds: null == storeIds
-          ? _value.storeIds
-          : storeIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$DealDetailsStateImplCopyWith<$Res>
-    implements $DealDetailsStateCopyWith<$Res> {
-  factory _$$DealDetailsStateImplCopyWith(_$DealDetailsStateImpl value,
-          $Res Function(_$DealDetailsStateImpl) then) =
-      __$$DealDetailsStateImplCopyWithImpl<$Res>;
+abstract class _$$DealDtoImplCopyWith<$Res> implements $DealDtoCopyWith<$Res> {
+  factory _$$DealDtoImplCopyWith(
+          _$DealDtoImpl value, $Res Function(_$DealDtoImpl) then) =
+      __$$DealDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String name,
       String description,
       int type,
+      int quanitity,
+      int quantityStatus,
       String currency,
       String condition,
       String image,
       double discountPercent,
       double maxDiscount,
-      int quantity,
       DateTime? startDate,
-      DateTime? endDate,
-      List<int> storeIds});
+      DateTime? endDate});
 }
 
 /// @nodoc
-class __$$DealDetailsStateImplCopyWithImpl<$Res>
-    extends _$DealDetailsStateCopyWithImpl<$Res, _$DealDetailsStateImpl>
-    implements _$$DealDetailsStateImplCopyWith<$Res> {
-  __$$DealDetailsStateImplCopyWithImpl(_$DealDetailsStateImpl _value,
-      $Res Function(_$DealDetailsStateImpl) _then)
+class __$$DealDtoImplCopyWithImpl<$Res>
+    extends _$DealDtoCopyWithImpl<$Res, _$DealDtoImpl>
+    implements _$$DealDtoImplCopyWith<$Res> {
+  __$$DealDtoImplCopyWithImpl(
+      _$DealDtoImpl _value, $Res Function(_$DealDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DealDetailsState
+  /// Create a copy of DealDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = null,
     Object? type = null,
+    Object? quanitity = null,
+    Object? quantityStatus = null,
     Object? currency = null,
     Object? condition = null,
     Object? image = null,
     Object? discountPercent = null,
     Object? maxDiscount = null,
-    Object? quantity = null,
     Object? startDate = freezed,
     Object? endDate = freezed,
-    Object? storeIds = null,
   }) {
-    return _then(_$DealDetailsStateImpl(
-      id: freezed == id
+    return _then(_$DealDtoImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -212,6 +216,14 @@ class __$$DealDetailsStateImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as int,
+      quanitity: null == quanitity
+          ? _value.quanitity
+          : quanitity // ignore: cast_nullable_to_non_nullable
+              as int,
+      quantityStatus: null == quantityStatus
+          ? _value.quantityStatus
+          : quantityStatus // ignore: cast_nullable_to_non_nullable
               as int,
       currency: null == currency
           ? _value.currency
@@ -233,10 +245,6 @@ class __$$DealDetailsStateImplCopyWithImpl<$Res>
           ? _value.maxDiscount
           : maxDiscount // ignore: cast_nullable_to_non_nullable
               as double,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -245,36 +253,34 @@ class __$$DealDetailsStateImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      storeIds: null == storeIds
-          ? _value._storeIds
-          : storeIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
     ));
   }
 }
 
 /// @nodoc
-
-class _$DealDetailsStateImpl implements _DealDetailsState {
-  const _$DealDetailsStateImpl(
-      {this.id = null,
+@JsonSerializable()
+class _$DealDtoImpl implements _DealDto {
+  const _$DealDtoImpl(
+      {this.id = 0,
       this.name = "",
       this.description = "",
       this.type = 1,
+      this.quanitity = 0,
+      this.quantityStatus = 0,
       this.currency = "",
       this.condition = "",
       this.image = "",
       this.discountPercent = 0,
       this.maxDiscount = 0,
-      this.quantity = 0,
       this.startDate = null,
-      this.endDate = null,
-      final List<int> storeIds = const []})
-      : _storeIds = storeIds;
+      this.endDate = null});
+
+  factory _$DealDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DealDtoImplFromJson(json);
 
   @override
   @JsonKey()
-  final int? id;
+  final int id;
   @override
   @JsonKey()
   final String name;
@@ -284,6 +290,12 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
   @override
   @JsonKey()
   final int type;
+  @override
+  @JsonKey()
+  final int quanitity;
+  @override
+  @JsonKey()
+  final int quantityStatus;
   @override
   @JsonKey()
   final String currency;
@@ -301,37 +313,30 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
   final double maxDiscount;
   @override
   @JsonKey()
-  final int quantity;
-  @override
-  @JsonKey()
   final DateTime? startDate;
   @override
   @JsonKey()
   final DateTime? endDate;
-  final List<int> _storeIds;
-  @override
-  @JsonKey()
-  List<int> get storeIds {
-    if (_storeIds is EqualUnmodifiableListView) return _storeIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_storeIds);
-  }
 
   @override
   String toString() {
-    return 'DealDetailsState(id: $id, name: $name, description: $description, type: $type, currency: $currency, condition: $condition, image: $image, discountPercent: $discountPercent, maxDiscount: $maxDiscount, quantity: $quantity, startDate: $startDate, endDate: $endDate, storeIds: $storeIds)';
+    return 'DealDto(id: $id, name: $name, description: $description, type: $type, quanitity: $quanitity, quantityStatus: $quantityStatus, currency: $currency, condition: $condition, image: $image, discountPercent: $discountPercent, maxDiscount: $maxDiscount, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DealDetailsStateImpl &&
+            other is _$DealDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.quanitity, quanitity) ||
+                other.quanitity == quanitity) &&
+            (identical(other.quantityStatus, quantityStatus) ||
+                other.quantityStatus == quantityStatus) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
             (identical(other.condition, condition) ||
@@ -341,14 +346,12 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
                 other.discountPercent == discountPercent) &&
             (identical(other.maxDiscount, maxDiscount) ||
                 other.maxDiscount == maxDiscount) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            const DeepCollectionEquality().equals(other._storeIds, _storeIds));
+            (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -356,50 +359,62 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
       name,
       description,
       type,
+      quanitity,
+      quantityStatus,
       currency,
       condition,
       image,
       discountPercent,
       maxDiscount,
-      quantity,
       startDate,
-      endDate,
-      const DeepCollectionEquality().hash(_storeIds));
+      endDate);
 
-  /// Create a copy of DealDetailsState
+  /// Create a copy of DealDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DealDetailsStateImplCopyWith<_$DealDetailsStateImpl> get copyWith =>
-      __$$DealDetailsStateImplCopyWithImpl<_$DealDetailsStateImpl>(
-          this, _$identity);
+  _$$DealDtoImplCopyWith<_$DealDtoImpl> get copyWith =>
+      __$$DealDtoImplCopyWithImpl<_$DealDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DealDtoImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _DealDetailsState implements DealDetailsState {
-  const factory _DealDetailsState(
-      {final int? id,
+abstract class _DealDto implements DealDto {
+  const factory _DealDto(
+      {final int id,
       final String name,
       final String description,
       final int type,
+      final int quanitity,
+      final int quantityStatus,
       final String currency,
       final String condition,
       final String image,
       final double discountPercent,
       final double maxDiscount,
-      final int quantity,
       final DateTime? startDate,
-      final DateTime? endDate,
-      final List<int> storeIds}) = _$DealDetailsStateImpl;
+      final DateTime? endDate}) = _$DealDtoImpl;
+
+  factory _DealDto.fromJson(Map<String, dynamic> json) = _$DealDtoImpl.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
   String get name;
   @override
   String get description;
   @override
   int get type;
+  @override
+  int get quanitity;
+  @override
+  int get quantityStatus;
   @override
   String get currency;
   @override
@@ -411,18 +426,14 @@ abstract class _DealDetailsState implements DealDetailsState {
   @override
   double get maxDiscount;
   @override
-  int get quantity;
-  @override
   DateTime? get startDate;
   @override
   DateTime? get endDate;
-  @override
-  List<int> get storeIds;
 
-  /// Create a copy of DealDetailsState
+  /// Create a copy of DealDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DealDetailsStateImplCopyWith<_$DealDetailsStateImpl> get copyWith =>
+  _$$DealDtoImplCopyWith<_$DealDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

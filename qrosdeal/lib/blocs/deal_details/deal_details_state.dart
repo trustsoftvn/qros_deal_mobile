@@ -9,7 +9,7 @@ class DealDetailsState extends BaseBlocState with _$DealDetailsState {
     @Default(null) int? id,
     @Default("") String name,
     @Default("") String description,
-    @Default(0) int type,
+    @Default(1) int type,
     @Default("") String currency,
     @Default("") String condition,
     @Default("") String image,

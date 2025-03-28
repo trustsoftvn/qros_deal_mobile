@@ -3,10 +3,10 @@ import 'package:qrosdeal/blocs/store/store_state.dart';
 import 'package:qrosdeal/core/base_bloc.dart';
 import 'package:qrosdeal/repositories/store_repository.dart';
 
-class StoreBloc extends BaseBloc<StoreEvent, StoreState> {
+class DealBloc extends BaseBloc<StoreEvent, StoreState> {
   final StoreRepository _storeRepository = StoreRepository();
 
-  StoreBloc() : super(const StoreState()) {
+  DealBloc() : super(const StoreState()) {
     fetchStoreList();
     on<RefetchStores>(_refetchStores);
   }
