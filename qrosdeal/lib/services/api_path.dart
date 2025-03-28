@@ -13,4 +13,6 @@ class ApiPath {
   static const uploadStoreImage = '/api/v1/dms/file/store';
   static const store = '/api/v1/store';
   static const storeList = '/api/v1/store/list';
+
+  static const dealList = '/api/v1/deal/merchant-page';
 }
