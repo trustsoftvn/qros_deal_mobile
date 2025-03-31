@@ -24,7 +24,7 @@ mixin _$DealDto {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get type => throw _privateConstructorUsedError;
-  int get quanitity => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   int get quantityStatus => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get condition => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $DealDtoCopyWith<$Res> {
       String name,
       String description,
       int type,
-      int quanitity,
+      int quantity,
       int quantityStatus,
       String currency,
       String condition,
@@ -83,7 +83,7 @@ class _$DealDtoCopyWithImpl<$Res, $Val extends DealDto>
     Object? name = null,
     Object? description = null,
     Object? type = null,
-    Object? quanitity = null,
+    Object? quantity = null,
     Object? quantityStatus = null,
     Object? currency = null,
     Object? condition = null,
@@ -110,9 +110,9 @@ class _$DealDtoCopyWithImpl<$Res, $Val extends DealDto>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int,
-      quanitity: null == quanitity
-          ? _value.quanitity
-          : quanitity // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       quantityStatus: null == quantityStatus
           ? _value.quantityStatus
@@ -162,7 +162,7 @@ abstract class _$$DealDtoImplCopyWith<$Res> implements $DealDtoCopyWith<$Res> {
       String name,
       String description,
       int type,
-      int quanitity,
+      int quantity,
       int quantityStatus,
       String currency,
       String condition,
@@ -190,7 +190,7 @@ class __$$DealDtoImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? type = null,
-    Object? quanitity = null,
+    Object? quantity = null,
     Object? quantityStatus = null,
     Object? currency = null,
     Object? condition = null,
@@ -217,9 +217,9 @@ class __$$DealDtoImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int,
-      quanitity: null == quanitity
-          ? _value.quanitity
-          : quanitity // ignore: cast_nullable_to_non_nullable
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       quantityStatus: null == quantityStatus
           ? _value.quantityStatus
@@ -265,7 +265,7 @@ class _$DealDtoImpl implements _DealDto {
       this.name = "",
       this.description = "",
       this.type = 1,
-      this.quanitity = 0,
+      this.quantity = 0,
       this.quantityStatus = 0,
       this.currency = "",
       this.condition = "",
@@ -292,7 +292,7 @@ class _$DealDtoImpl implements _DealDto {
   final int type;
   @override
   @JsonKey()
-  final int quanitity;
+  final int quantity;
   @override
   @JsonKey()
   final int quantityStatus;
@@ -320,7 +320,7 @@ class _$DealDtoImpl implements _DealDto {
 
   @override
   String toString() {
-    return 'DealDto(id: $id, name: $name, description: $description, type: $type, quanitity: $quanitity, quantityStatus: $quantityStatus, currency: $currency, condition: $condition, image: $image, discountPercent: $discountPercent, maxDiscount: $maxDiscount, startDate: $startDate, endDate: $endDate)';
+    return 'DealDto(id: $id, name: $name, description: $description, type: $type, quantity: $quantity, quantityStatus: $quantityStatus, currency: $currency, condition: $condition, image: $image, discountPercent: $discountPercent, maxDiscount: $maxDiscount, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
@@ -333,8 +333,8 @@ class _$DealDtoImpl implements _DealDto {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.quanitity, quanitity) ||
-                other.quanitity == quanitity) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
             (identical(other.quantityStatus, quantityStatus) ||
                 other.quantityStatus == quantityStatus) &&
             (identical(other.currency, currency) ||
@@ -359,7 +359,7 @@ class _$DealDtoImpl implements _DealDto {
       name,
       description,
       type,
-      quanitity,
+      quantity,
       quantityStatus,
       currency,
       condition,
@@ -391,7 +391,7 @@ abstract class _DealDto implements DealDto {
       final String name,
       final String description,
       final int type,
-      final int quanitity,
+      final int quantity,
       final int quantityStatus,
       final String currency,
       final String condition,
@@ -412,7 +412,7 @@ abstract class _DealDto implements DealDto {
   @override
   int get type;
   @override
-  int get quanitity;
+  int get quantity;
   @override
   int get quantityStatus;
   @override

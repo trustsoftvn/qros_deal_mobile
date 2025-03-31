@@ -49,6 +49,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   dart_jsonwebtoken: ^2.17.0
   json_annotation: ^4.9.0
+  syncfusion_flutter_datepicker: ^29.1.33
 
 dev_dependencies:
   flutter_test:

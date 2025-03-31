@@ -9,12 +9,6 @@ class InitData extends DealDetailsEvent {
   InitData(this.dealDto);
 }
 
-class ChooseStoreImage extends DealDetailsEvent {
-  final String imagePath;
-
-  ChooseStoreImage(this.imagePath);
-}
-
 class NameInputChanged extends DealDetailsEvent {
   final String name;
 
@@ -52,21 +46,28 @@ class CurrencyInputChange extends DealDetailsEvent {
 }
 
 class DiscountPercentInputChange extends DealDetailsEvent {
-  final double discountPercent;
+  final String discountPercent;
 
   DiscountPercentInputChange(this.discountPercent);
 }
 
 class MaxDiscountInputChange extends DealDetailsEvent {
-  final double maxDiscount;
+  final String maxDiscount;
 
   MaxDiscountInputChange(this.maxDiscount);
 }
 
 class QuantityInputChange extends DealDetailsEvent {
-  final int quantity;
+  final String quantity;
 
   QuantityInputChange(this.quantity);
+}
+
+class DateChange extends DealDetailsEvent {
+  final DateTime? startDate;
+  final DateTime? endDate;
+
+  DateChange(this.startDate, this.endDate);
 }
 
 class CreateButtonPressed extends DealDetailsEvent {}

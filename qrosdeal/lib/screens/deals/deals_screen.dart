@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qrosdeal/blocs/deals/deals_bloc.dart';
 import 'package:qrosdeal/blocs/deals/deals_state.dart';
-import 'package:qrosdeal/blocs/store/store_bloc.dart';
 import 'package:qrosdeal/common/style/app_color.dart';
 import 'package:qrosdeal/common/style/app_text_style.dart';
 import 'package:qrosdeal/core/base_stateless_widget.dart';
-import 'package:qrosdeal/screens/create_store/create_store_screen.dart';
 import 'package:qrosdeal/screens/deal_details/deal_details_screen.dart';
 
 class DealsScreen extends BaseStatelessWidget<DealsBloc> {
@@ -42,7 +40,7 @@ class DealsScreen extends BaseStatelessWidget<DealsBloc> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const CreateStoreScreen(),
+                                      const DealDetailsScreen(),
                                 ),
                               );
                             },

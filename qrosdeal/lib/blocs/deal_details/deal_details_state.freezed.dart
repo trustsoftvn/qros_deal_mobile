@@ -23,9 +23,9 @@ mixin _$DealDetailsState {
   String get currency => throw _privateConstructorUsedError;
   String get condition => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  double get discountPercent => throw _privateConstructorUsedError;
-  double get maxDiscount => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
+  String get discountPercent => throw _privateConstructorUsedError;
+  String get maxDiscount => throw _privateConstructorUsedError;
+  String get quantity => throw _privateConstructorUsedError;
   DateTime? get startDate => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
   List<int> get storeIds => throw _privateConstructorUsedError;
@@ -51,9 +51,9 @@ abstract class $DealDetailsStateCopyWith<$Res> {
       String currency,
       String condition,
       String image,
-      double discountPercent,
-      double maxDiscount,
-      int quantity,
+      String discountPercent,
+      String maxDiscount,
+      String quantity,
       DateTime? startDate,
       DateTime? endDate,
       List<int> storeIds});
@@ -120,15 +120,15 @@ class _$DealDetailsStateCopyWithImpl<$Res, $Val extends DealDetailsState>
       discountPercent: null == discountPercent
           ? _value.discountPercent
           : discountPercent // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       maxDiscount: null == maxDiscount
           ? _value.maxDiscount
           : maxDiscount // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -161,9 +161,9 @@ abstract class _$$DealDetailsStateImplCopyWith<$Res>
       String currency,
       String condition,
       String image,
-      double discountPercent,
-      double maxDiscount,
-      int quantity,
+      String discountPercent,
+      String maxDiscount,
+      String quantity,
       DateTime? startDate,
       DateTime? endDate,
       List<int> storeIds});
@@ -228,15 +228,15 @@ class __$$DealDetailsStateImplCopyWithImpl<$Res>
       discountPercent: null == discountPercent
           ? _value.discountPercent
           : discountPercent // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       maxDiscount: null == maxDiscount
           ? _value.maxDiscount
           : maxDiscount // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -264,9 +264,9 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
       this.currency = "",
       this.condition = "",
       this.image = "",
-      this.discountPercent = 0,
-      this.maxDiscount = 0,
-      this.quantity = 0,
+      this.discountPercent = "",
+      this.maxDiscount = "",
+      this.quantity = "",
       this.startDate = null,
       this.endDate = null,
       final List<int> storeIds = const []})
@@ -295,13 +295,13 @@ class _$DealDetailsStateImpl implements _DealDetailsState {
   final String image;
   @override
   @JsonKey()
-  final double discountPercent;
+  final String discountPercent;
   @override
   @JsonKey()
-  final double maxDiscount;
+  final String maxDiscount;
   @override
   @JsonKey()
-  final int quantity;
+  final String quantity;
   @override
   @JsonKey()
   final DateTime? startDate;
@@ -385,9 +385,9 @@ abstract class _DealDetailsState implements DealDetailsState {
       final String currency,
       final String condition,
       final String image,
-      final double discountPercent,
-      final double maxDiscount,
-      final int quantity,
+      final String discountPercent,
+      final String maxDiscount,
+      final String quantity,
       final DateTime? startDate,
       final DateTime? endDate,
       final List<int> storeIds}) = _$DealDetailsStateImpl;
@@ -407,11 +407,11 @@ abstract class _DealDetailsState implements DealDetailsState {
   @override
   String get image;
   @override
-  double get discountPercent;
+  String get discountPercent;
   @override
-  double get maxDiscount;
+  String get maxDiscount;
   @override
-  int get quantity;
+  String get quantity;
   @override
   DateTime? get startDate;
   @override

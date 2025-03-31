@@ -15,4 +15,5 @@ class ApiPath {
   static const storeList = '/api/v1/store/list';
 
   static const dealList = '/api/v1/deal/merchant-page';
+  static const deal = '/api/v1/deal';
 }

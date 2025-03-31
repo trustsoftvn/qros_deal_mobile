@@ -10,7 +10,7 @@ class DealDto with _$DealDto {
     @Default("") String name,
     @Default("") String description,
     @Default(1) int type,
-    @Default(0) int quanitity,
+    @Default(0) int quantity,
     @Default(0) int quantityStatus,
     @Default("") String currency,
     @Default("") String condition,
