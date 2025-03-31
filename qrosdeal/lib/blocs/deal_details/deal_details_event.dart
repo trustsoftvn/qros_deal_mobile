@@ -1,18 +1,12 @@
 import 'package:qrosdeal/core/base_bloc_event.dart';
-import 'package:qrosdeal/models/store_dto/store_dto.dart';
+import 'package:qrosdeal/models/deal_dto/deal_dto.dart';
 
 abstract class DealDetailsEvent extends BaseBlocEvent {}
 
 class InitData extends DealDetailsEvent {
-  final StoreDto? store;
+  final DealDto? dealDto;
 
-  InitData(this.store);
-}
-
-class ChooseStoreImage extends DealDetailsEvent {
-  final String imagePath;
-
-  ChooseStoreImage(this.imagePath);
+  InitData(this.dealDto);
 }
 
 class NameInputChanged extends DealDetailsEvent {
@@ -21,18 +15,59 @@ class NameInputChanged extends DealDetailsEvent {
   NameInputChanged(this.name);
 }
 
-class PhoneInputChanged extends DealDetailsEvent {
-  final String phoneNumber;
+class TypeInputChange extends DealDetailsEvent {
+  final int type;
 
-  PhoneInputChanged(this.phoneNumber);
+  TypeInputChange(this.type);
 }
 
-class AddressChanged extends DealDetailsEvent {
-  final String address;
-  final double latitude;
-  final double longitude;
+class DescriptionInputChange extends DealDetailsEvent {
+  final String description;
 
-  AddressChanged(this.address, this.latitude, this.longitude);
+  DescriptionInputChange(this.description);
+}
+
+class ConditionInputChange extends DealDetailsEvent {
+  final String condition;
+
+  ConditionInputChange(this.condition);
+}
+
+class ImageChange extends DealDetailsEvent {
+  final String imagePath;
+
+  ImageChange(this.imagePath);
+}
+
+class CurrencyInputChange extends DealDetailsEvent {
+  final String currency;
+
+  CurrencyInputChange(this.currency);
+}
+
+class DiscountPercentInputChange extends DealDetailsEvent {
+  final String discountPercent;
+
+  DiscountPercentInputChange(this.discountPercent);
+}
+
+class MaxDiscountInputChange extends DealDetailsEvent {
+  final String maxDiscount;
+
+  MaxDiscountInputChange(this.maxDiscount);
+}
+
+class QuantityInputChange extends DealDetailsEvent {
+  final String quantity;
+
+  QuantityInputChange(this.quantity);
+}
+
+class DateChange extends DealDetailsEvent {
+  final DateTime? startDate;
+  final DateTime? endDate;
+
+  DateChange(this.startDate, this.endDate);
 }
 
 class CreateButtonPressed extends DealDetailsEvent {}

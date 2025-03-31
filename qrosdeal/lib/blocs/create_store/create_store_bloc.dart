@@ -18,21 +18,39 @@ class CreateStoreBloc extends BaseBloc<CreateStoreEvent, CreateStoreState> {
   void _onInitData(InitData event, emit) {
     if (event.store != null) {
       emit(state.copyWith(
-        id: event.store!.id,
-        name: event.store!.name,
-        phoneNumber: event.store!.phoneNumber,
-        address: event.store!.address,
-        imageURL: event.store!.logo,
-      ));
+          id: event.store!.id,
+          name: event.store!.name,
+          phoneNumber: event.store!.phoneNumber,
+          address: event.store!.address,
+          imageURL: event.store!.logo,
+          originalStore: event.store));
     }
+    final isButtonDisabled = evaluateButtonDisabled();
+    emit(state.copyWith(isButtonDisabled: isButtonDisabled));
+  }
+
+  bool evaluateButtonDisabled() {
+    final originalStore = state.originalStore;
+    if (originalStore == null) {
+      return false;
+    }
+
+    return originalStore.name == state.name &&
+        originalStore.phoneNumber == state.phoneNumber &&
+        originalStore.address == state.address &&
+        originalStore.logo == state.imageURL;
   }
 
   void _onNameInputChanged(NameInputChanged event, emit) {
     emit(state.copyWith(name: event.name));
+    final isButtonDisabled = evaluateButtonDisabled();
+    emit(state.copyWith(isButtonDisabled: isButtonDisabled));
   }
 
   void _onPhoneInputChanged(PhoneInputChanged event, emit) {
     emit(state.copyWith(phoneNumber: event.phoneNumber));
+    final isButtonDisabled = evaluateButtonDisabled();
+    emit(state.copyWith(isButtonDisabled: isButtonDisabled));
   }
 
   void _onAddressChanged(AddressChanged event, emit) {
@@ -43,6 +61,8 @@ class CreateStoreBloc extends BaseBloc<CreateStoreEvent, CreateStoreState> {
         longitude: event.longitude,
       ),
     );
+    final isButtonDisabled = evaluateButtonDisabled();
+    emit(state.copyWith(isButtonDisabled: isButtonDisabled));
   }
 
   void _onChooseStoreImage(ChooseStoreImage event, emit) async {
@@ -52,6 +72,8 @@ class CreateStoreBloc extends BaseBloc<CreateStoreEvent, CreateStoreState> {
         imageURL: res.url,
       ),
     );
+    final isButtonDisabled = evaluateButtonDisabled();
+    emit(state.copyWith(isButtonDisabled: isButtonDisabled));
   }
 
   void _onCreateButtonPressed(CreateButtonPressed event, emit) async {

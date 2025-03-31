@@ -74,16 +74,19 @@ class _RegisterUserTypeState extends State<RegisterUserType> {
               RichText(
                 text: TextSpan(
                     text: "Already have an account? ",
-                    style: AppTextStyle.normal14.copyWith(color: AppColor.textSecondary),
+                    style: AppTextStyle.normal14
+                        .copyWith(color: AppColor.textSecondary),
                     children: [
                       TextSpan(
                           text: "Log in",
-                          style: AppTextStyle.bold14.copyWith(color: AppColor.primary),
+                          style: AppTextStyle.bold14
+                              .copyWith(color: AppColor.primary),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
                               );
                             })
                     ]),

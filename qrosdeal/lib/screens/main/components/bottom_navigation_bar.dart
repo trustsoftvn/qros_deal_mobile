@@ -29,7 +29,8 @@ class AppBottomNavigationBar extends StatelessWidget {
   }
 
   Widget _menuItem(IconData icon, String label, int index) {
-    final color = index == currentIndex ? AppColor.primary : AppColor.textSecondary;
+    final color =
+        index == currentIndex ? AppColor.primary : AppColor.textSecondary;
     return GestureDetector(
       onTap: () {
         onTabSelected(index);
@@ -40,7 +41,7 @@ class AppBottomNavigationBar extends StatelessWidget {
             icon,
             color: color,
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Text(

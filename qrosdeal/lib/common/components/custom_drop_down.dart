@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:qrosdeal/common/style/app_color.dart';
 import 'package:qrosdeal/common/style/app_text_style.dart';
 
+class DDItem<T> {
+  final T value;
+  final String label;
+
+  DDItem(this.value, this.label);
+}
+
 class CustomDropDown<T> extends StatelessWidget {
-  final List<T> items;
+  final List<DDItem<T>> items;
   final Widget? hint;
   final T? value;
   final String? label;
@@ -39,9 +46,9 @@ class CustomDropDown<T> extends StatelessWidget {
                   hint: hint,
                   items: items
                       .map((item) => DropdownMenuItem<T>(
-                            value: item,
+                            value: item.value,
                             child: Text(
-                              item.toString(),
+                              item.label,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -64,8 +71,9 @@ class CustomDropDown<T> extends StatelessWidget {
                     ),
                   ),
                   dropdownStyleData: DropdownStyleData(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white),
                     scrollbarTheme: ScrollbarThemeData(
                       radius: const Radius.circular(40),
                       thickness: WidgetStateProperty.all(6),
